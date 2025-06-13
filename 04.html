@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luka File Injector - Install</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #00ffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8em;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      color: #00ffff;
+      letter-spacing: 1px;
+    }
+
+    #container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      font-family: monospace;
+      font-size: 14px;
+      color: #ffffff;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      scroll-behavior: smooth;
+    }
+
+    .btn-launch {
+      display: none;
+      margin: 20px auto;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .btn-launch:hover {
+      background-color: #00cccc;
+    }
+
+    .btn-launch.show {
+      display: block;
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      background-color: #111;
+      color: #00ffffaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Luka File Injector</header>
+
+  <div id="container"></div>
+
+  <button class="btn-launch" id="launchBtn" onclick="window.location.href='https://www.tiktok.com'">
+    Launch Free Fire
+  </button>
+
+  <footer>©2025 Gaming Luka. All rights reserved.</footer>
+
+  <script>
+    const codeLines = [
+      "Initializing...\n",
+      "struct file_info init_files = {.usage = ATOMIC_INIT(2)};\n",
+      "struct file_info *files_alloc(int gidsetsize) {\n",
+      "    struct file_info *file_info;\n",
+      "    int nblocks, i;\n",
+      "    nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK;\n",
+      "    nblocks = nblocks ?: 1;\n",
+      "    file_info = kmalloc(sizeof(*file_info) + nblocks * sizeof(gid_t *), GFP_USER);\n",
+      "    if (!file_info) return NULL;\n",
+      "    file_info->ngroups = gidsetsize;\n",
+      "    file_info->nblocks = nblocks;\n",
+      "    atomic_set(&file_info->usage, 1);\n",
+      "    if (gidsetsize <= NGROUPS_SMALL)\n",
+      "        file_info->blocks[0] = file_info->small_block;\n",
+      "    else {\n",
+      "        for (i = 0; i < nblocks; i++) {\n",
+      "            gid_t *b;\n",
+      "            b = (void *)__get_free_page(GFP_USER);\n",
+      "            if (!b) goto out_undo_partial_alloc;\n",
+      "            file_info->blocks[i] = b;\n",
+      "        }\n",
+      "    }\n",
+      "    return file_info;\n",
+      "out_undo_partial_alloc:\n",
+      "    while (--i >= 0) {\n",
+      "        free_page((unsigned long)file_info->blocks[i]);\n",
+      "    }\n",
+      "    kfree(file_info);\n",
+      "    return NULL;\n",
+      "}\n",
+      "EXPORT_SYMBOL(files_alloc);\n",
+      "\n",
+      "Installing location=('com.dts.freefire')\n",
+      ">>> Parsing assets...\n",
+      ">>> Writing core files...\n",
+      ">>> Optimizing access...\n",
+      ">>> InjectionProtocol.initiate()\n",
+      ">>> Warning: Overriding default paths\n",
+      ">>> [SYS] handle_exec(gid_t *file_info) -> success\n",
+      ">>> [SYS] struct memory.alloc(192KB) => OK\n",
+      ">>> Finishing installation...\n",
+      "File installation successful.\n"
+    ];
+
+    const target = document.getElementById("container");
+    const launchBtn = document.getElementById("launchBtn");
+    let i = 0, line = 0;
+
+    function typeLine() {
+      if (line < codeLines.length) {
+        if (i < codeLines[line].length) {
+          target.innerHTML += codeLines[line].charAt(i);
+          target.scrollTop = target.scrollHeight;
+          i++;
+          setTimeout(typeLine, 5 + Math.random() * 25);
+        } else {
+          target.innerHTML += "\n";
+          line++;
+          i = 0;
+          target.scrollTop = target.scrollHeight;
+          setTimeout(typeLine, 80);
+        }
+      } else {
+        setTimeout(() => {
+          launchBtn.classList.add("show");
+          launchBtn.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+    }
+
+    typeLine();
+  </script>
+
+</body>
+</html>

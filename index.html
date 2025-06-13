@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luka - Gaming File Injector</title>
+
+  <style>
+    /* ======= CSS CONTENT ======= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #00ffff;
+      overflow-x: hidden;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: #111;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .menu-btn {
+      font-size: 2em;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 1.7em;
+      text-align: center;
+      flex: 1;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      width: 250px;
+      height: 100%;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+      box-shadow: 2px 0 10px #00ffff55;
+      animation: slideIn 0.3s ease forwards;
+    }
+
+    .sidebar.hide {
+      animation: slideOut 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes slideOut {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 998;
+      display: none;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #00ffff;
+      padding: 15px 0;
+      font-size: 1.2em;
+      transition: 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .container {
+      padding: 30px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: #111;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 0 15px #00ffff33;
+      max-width: 500px;
+      margin: auto;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      margin-bottom: 20px;
+      color: #aaa;
+    }
+
+    ul {
+      text-align: left;
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .btn:hover {
+      background-color: #fff;
+    }
+
+    footer {
+      background-color: #111;
+      color: #00ffffaa;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+
+    .footer-links {
+      margin: 15px 0;
+    }
+
+    .footer-links a {
+      color: #00ffff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: #00ffff;
+      font-size: 1.3em;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <header>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="title">Luka File Injector</div>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <a href="#">Gaming Luka</a>
+    <a href="#">🌐 Web site</a>
+    <a href="#">📞 Contact us</a>
+    <a href="#">🚀 Upgrade Pro</a>
+    <a href="#">⭐ Rate us</a>
+  </div>
+
+  <br><br><br>
+
+  <div class="container">
+    <div class="card">
+      <p class="subtitle">This file for Freefire</p>
+      <a href="02.html">
+        <img src="https://res.cloudinary.com/dl167vevk/image/upload/v1748468547/03_gizdet.png" alt="Fade In Image" class="fade-in">
+      </a>
+      <ul>
+        <li>About file: 1280x720 resolution</li>
+        <li>Secure & optimized for performance</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#">Privacy</a> |
+      <a href="#">Terms</a> |
+      <a href="#">Support</a>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+    </div>
+    <p style="margin-top: 10px;">©2025 Gaming Luka. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ======= JAVASCRIPT CONTENT =======
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      sidebar.classList.remove('hide');
+      sidebar.style.display = "flex";
+      overlay.style.display = "block";
+    }
+
+    function closeMenu() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      sidebar.classList.add('hide');
+
+      setTimeout(() => {
+        sidebar.style.display = "none";
+        sidebar.classList.remove('hide');
+      }, 300); // match animation duration
+
+      overlay.style.display = "none";
+    }
+  </script>
+</body>
+</html>

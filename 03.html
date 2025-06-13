@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luka File Injector - Download</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #00ffff;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: #111;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .menu-btn {
+      font-size: 2em;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 1.7em;
+      text-align: center;
+      flex: 1;
+    }
+
+    .container {
+      height: calc(100vh - 60px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .download-icon {
+      width: 100px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .progress-bar {
+      width: 200px;
+      height: 10px;
+      background-color: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background-color: #00ffff;
+      animation: loadBar 12s linear forwards;
+    }
+
+    .install-btn {
+      padding: 15px 30px;
+      font-size: 20px;
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .fade {
+      transition: opacity 1s ease;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #00ffffaa;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes loadBar {
+      to {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="menu-btn"></div>
+    <div class="title">Luka File Injector</div>
+  </header>
+
+  <div class="container">
+    <div id="download-section" class="fade">
+      <img src="https://cdn-icons-png.flaticon.com/512/109/109612.png" alt="Download" class="download-icon">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <div id="install-section" class="fade hidden">
+      <button class="install-btn" onclick="window.location.href='04.html'">Install</button>
+    </div>
+  </div>
+
+  <script>
+    window.onload = () => {
+      const downloadSection = document.getElementById('download-section');
+      const installSection = document.getElementById('install-section');
+      const installBtn = document.querySelector('.install-btn');
+
+      // Wait for 13 seconds: 1s fade in + 12s loading
+      setTimeout(() => {
+        // Fade out download animation
+        downloadSection.style.opacity = '0';
+
+        setTimeout(() => {
+          downloadSection.classList.add('hidden');
+
+          // Show install button
+          installSection.classList.remove('hidden');
+
+          setTimeout(() => {
+            installBtn.style.opacity = '1';
+          }, 100);
+        }, 1000);
+      }, 13000);
+    };
+  </script>
+
+</body>
+</html>
